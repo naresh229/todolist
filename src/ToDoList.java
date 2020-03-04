@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -46,6 +48,18 @@ public class ToDoList {
 			if (task.isComplete() == true)
 				completedTasks.add(task);
 		return completedTasks;
+	}
+	
+	public void deleteCompletedTasks() {
+		Iterator<Map.Entry<String, Task>> iterator = tasks.entrySet().iterator();
+		while(iterator.hasNext()) {
+			Map.Entry<String, Task> entry = iterator.next();
+			String key = entry.getKey();
+			Task task = tasks.get(key);
+			if(task.isComplete()) {
+				iterator.remove();
+			}
+		}
 	}
 	
 }

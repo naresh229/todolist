@@ -91,4 +91,19 @@ public class ToDoListTest {
 		String invalid_datetime = "abcd banana";
 		assertFalse("Date time string should be invalid", task1.addDeadline(invalid_datetime));
 	}
+	
+	@Test
+	public void deleteCompletedTask() {
+		task1.setComplete(true);
+		task2.setComplete(false);
+		task3.setComplete(true);
+		todoList.addTask(task1);
+		todoList.addTask(task2);
+		todoList.addTask(task3);
+		
+		todoList.deleteCompletedTasks();
+		
+		Collection<Task> tasks = todoList.getAllTasks();
+		assertEquals(1, tasks.size());
+	}
 }
