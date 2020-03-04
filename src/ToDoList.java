@@ -11,7 +11,10 @@ public class ToDoList {
 	}
 
 	public void completeTask(String description) {
-		// todo
+		Task task = null;
+		if ((task = tasks.get(description)) != null){
+			task.setComplete(true);
+		};
 	}
 
 	public boolean getStatus(String description) {

@@ -41,7 +41,11 @@ public class ToDoListTest {
 
 	@Test
 	public void testgetStatus() {
-		assertTrue(false);
+		assertNotNull(todoList);
+		todoList.addTask(task1);
+		assertEquals(false, todoList.getStatus(task1.getDescription()));
+		todoList.completeTask(task1.getDescription());
+		assertEquals(true, todoList.getStatus(task1.getDescription()));
 	}
 
 	@Test
