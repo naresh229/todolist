@@ -1,10 +1,12 @@
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 
 public class ToDoList {
 
@@ -68,6 +70,25 @@ public class ToDoList {
 		List<Task> mapValues = new ArrayList<Task>(tasks.values());
 		Collections.sort(mapValues);
 		return mapValues;
+	}
+	
+	public int printReminder() {
+		Collection<Task> allTasks = getAllTasks();
+		Date now = new Date();
+		Instant nowInstant = now.toInstant();
+		int counter = 0;
+		for (Task task : allTasks) {
+			Date taskdate = task.getDeadline();
+			Instant taskInstant = taskdate.toInstant();
+			long diff = taskInstant.toEpochMilli() - nowInstant.toEpochMilli();
+			long offset = 24*60*60*1000;
+			
+			if(diff < offset) {
+				counter++;
+				System.out.println("Task needs to be done in day " + task.getDeadlineInString() + " " + task.getDescription());
+			}
+		}
+			return counter;
 	}
 	
 }

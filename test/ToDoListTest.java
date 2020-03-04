@@ -121,4 +121,22 @@ public class ToDoListTest {
 		assertEquals(tasksArr[1], task3);
 		assertEquals(tasksArr[2], task1);
 	}
+	
+	@Test
+	public void testReminder() {
+		assertNotNull(todoList);
+		todoList.addTask(task1);
+		String valid_datetime = "2020/03/05 12:08:43";
+		task1.addDeadline(valid_datetime);
+		todoList.addTask(task1);
+		
+		String valid_datetime2 = "2020/03/08 12:08:43";
+		task2.addDeadline(valid_datetime2);
+		todoList.addTask(task2);
+		
+		
+		int c = todoList.printReminder();
+		assertEquals(1,  c);
+		
+	}
 }
