@@ -70,7 +70,7 @@ public class ToDoListTest {
 		Collection<Task> tasks = todoList.getCompletedTasks();
 		assertEquals(2, tasks.size());
 	}
-	
+
 	@Test
 	public void testListAllTask() {
 
@@ -79,5 +79,16 @@ public class ToDoListTest {
 
 		Collection<Task> tasks = todoList.getAllTasks();
 		assertEquals(2, tasks.size());
+	}
+
+	@Test
+	public void testAddDeadlineToTask() {
+		assertNotNull(todoList);
+		todoList.addTask(task1);
+		String valid_datetime = "2019/11/16 12:08:43";
+		assertTrue("Date time string is invalid", task1.addDeadline(valid_datetime));
+		assertEquals("Date time parsing is not working", valid_datetime, task1.getDeadlineInString());
+		String invalid_datetime = "abcd banana";
+		assertFalse("Date time string should be invalid", task1.addDeadline(invalid_datetime));
 	}
 }
