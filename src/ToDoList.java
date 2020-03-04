@@ -2,7 +2,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Collection;
+import java.util.Collections;
 
 public class ToDoList {
 
@@ -60,6 +62,12 @@ public class ToDoList {
 				iterator.remove();
 			}
 		}
+	}
+	
+	public Collection<Task> getTaskByDeadline() {
+		List<Task> mapValues = new ArrayList<Task>(tasks.values());
+		Collections.sort(mapValues);
+		return mapValues;
 	}
 	
 }

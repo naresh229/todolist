@@ -106,4 +106,19 @@ public class ToDoListTest {
 		Collection<Task> tasks = todoList.getAllTasks();
 		assertEquals(1, tasks.size());
 	}
+	
+	@Test
+	public void testSortByDeadline() {
+		task1.addDeadline("2019/11/16 12:08:43");
+		task2.addDeadline("2019/11/14 12:08:43");
+		task3.addDeadline("2019/11/15 12:08:43");
+		todoList.addTask(task1);
+		todoList.addTask(task2);
+		todoList.addTask(task3);
+		Collection<Task> tasks = todoList.getTaskByDeadline();
+		Task[] tasksArr = tasks.toArray(new Task[tasks.size()]);
+		assertEquals(tasksArr[0], task2);
+		assertEquals(tasksArr[1], task3);
+		assertEquals(tasksArr[2], task1);
+	}
 }

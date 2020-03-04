@@ -3,7 +3,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Task {
+public class Task implements Comparable<Task> {
 	private static final DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
 	private String description = null;
@@ -50,9 +50,14 @@ public class Task {
 	public Date getDeadline() {
 		return deadline;
 	}
-	
+
 	public String getDeadlineInString() {
 		return sdf.format(deadline);
+	}
+
+	@Override
+	public int compareTo(Task other) {
+		return getDeadline().compareTo(other.getDeadline());
 	}
 
 }
