@@ -76,9 +76,8 @@ public class ToDoListTest {
 
 		todoList.addTask(task1);
 		todoList.addTask(task2);
-		todoList.addTask(task3);
 
 		Collection<Task> tasks = todoList.getAllTasks();
-		assertEquals(3, tasks.size());
+		assertEquals(2, tasks.size());
 	}
 }
